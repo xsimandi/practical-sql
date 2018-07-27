@@ -8,7 +8,7 @@ psql
 and
 /c myzoo */
 
-CREATE USER simijagu WITH PASSWORD 'passwd';
+CREATE USER xyz WITH PASSWORD 'abc';
 ALTER USER simijagu WITH superuser;
 
 
