@@ -8,7 +8,7 @@ psql
 and
 /c myzoo */
 
-CREATE USER simijagu WITH PASSWORD 'passw';
+CREATE USER simijagu WITH PASSWORD 'passwd';
 ALTER USER simijagu WITH superuser;
 
 
@@ -50,5 +50,17 @@ VALUES ('Dingo', 'Australia', 'Canidae', 'medium', 25),
        ('Wildcat', 'Europe', 'Felidae', 'small-medium', 7),
        ('Walrus', 'North Atlantic', 'Odobenidae', 'huge', 2000);
        
+/* incorrect */
 INSERT INTO animal_details(animal_name_en, department, family, size_cat, size_kg)
 VALUES ('Hawaiian monk seal', 'Pacific', 'Phocidae', 'medium');
+
+/* gives error: 
+ERROR:  INSERT has more target columns than expressions
+LINE 1: ...tails(animal_name_en, department, family, size_cat, size_kg)
+                                                               ^
+SQL state: 42601
+Character: 74
+*/
+/* correct query */
+INSERT INTO animal_details(animal_name_en, department, family, size_cat, size_kg)
+VALUES ('Hawaiian monk seal', 'Pacific', 'Phocidae', 'medium', 1000);
